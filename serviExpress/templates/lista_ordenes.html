@@ -1,0 +1,37 @@
+{% extends 'base.html' %} 
+
+{% block  content %}
+<h1>Lista de Órdenes</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Cliente</th>
+                <th>Estado</th>
+                <th>Costo</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for orden in ordenes %}
+                <tr>
+                    <td>{{ orden.id }}</td>
+                    <td>{{ orden.cliente.nombre }}</td>
+                    <td>{{ orden.estado }}</td>
+                    <td>{{ orden.costo }}</td>
+                    <td>
+                        <a href="{% url 'editar_orden' orden.id %}">Editar</a> |
+                        <a href="{% url 'eliminar_orden' orden.id %}">Eliminar</a>
+                    </td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="4">No hay órdenes disponibles</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <button onclick="window.location.href='{% url 'menu' %}'">Volver</button>
+
+{% endblock %}
+
+

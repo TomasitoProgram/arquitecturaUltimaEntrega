@@ -1,0 +1,14 @@
+{% extends 'base.html' %} 
+
+{% block content %}
+<div class="crearOrden">
+    <h1>Actualizar Orden</h1>
+    {% if form %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Guardar</button>
+    </form>
+    {% endif %} 
+</div>
+{% endblock content %}

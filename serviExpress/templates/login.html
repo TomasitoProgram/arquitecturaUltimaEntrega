@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <style>
+        #body {
+            padding-top: 150px;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid" id="body">
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-8">
+            <form class="form" id="form" method="post" action="">
+                {% csrf_token %}
+                {% if error %}
+                <div class="alert alert-danger">{{ error }}</div>
+                {% endif %}
+                <div class="Correo mb-2">
+                <label for="id_username" class="form-label" style="color:  #905a5a;">Usuario</label>
+                <input 
+                    type="text" class="form-control" 
+                    id="id_username" name="username" 
+                    aria-describedby="CorreoHelp" style="max-width: 400px;">
+                <div id="CorreoHelp" class="form-text">
+
+                </div>
+                <div class="invalid-feedback">
+                    El campo Correo es obligatorio
+                </div>
+                </div>
+                <div class="password mb-2">
+                <label for="id_password" class="form-label" style="color:  #905a5a;">
+                    Contraseña
+                </label>
+                <input 
+                    type="password" class="form-control" 
+                    id="id_password" name="password" 
+                    aria-describedby="passwordHelp" style="max-width: 400px;">
+                <div id="passwordHelp" class="form-text" >
+                    Una letra en mayuscula y un simbolo
+                </div>
+                <div class="invalid-feedback">
+                    El campo contraseña es obligatorio.
+                </div>
+                </div>
+                <div class="mt-4" style="padding-left: 150px;">
+                <button type="submit" class="btn btn-primary" style="background-color:  #f29d9e;  border-color: black; color: rgb(36, 36, 36); ;" > Ingresar </button>
+                </div>
+            </form>
+        </div>
+        <div class="col-2"></div>
+    </div>
+</div>
+{% endblock %}
